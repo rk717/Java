@@ -31,7 +31,7 @@ public class StaticExample_2 {
         aa1.i = 99; 
         System.out.printf("%d\n", aa2.i); //99 说明aa1 和 aa2 是一个对象
 
-        if(aa1 == aa2)
+        if(aa1 == aa2)  //像两个指针指一个东西
         {
             System.out.printf("aa1 and aa2 are the same\n");
         }
