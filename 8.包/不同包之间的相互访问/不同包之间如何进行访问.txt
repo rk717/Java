@@ -1,0 +1,22 @@
+1.在同一个包中只有私有的不能被另一个类访问，
+    也只有私有的不能被继承
+
+2.在不同包没有任何关系的两个类，
+    只有public类的public成员才可以被另一个包中的类访问。
+
+3.在不同包中有继承关系的两个类，
+    只有public类的public成员和public类的protected成员可以被
+    另一个包中的子类在内部使用，
+    但是在子类的外部，通过子类对象名，只能访问父类的public成员。
+
+----------------------------------------------------------
+
+            同包同类：public protected default private
+
+        访问同包不同类：public protected default
+
+        同包不同类继承：public protected default
+
+            不同包继承：public protected
+
+访问不同包无任何关系的类：public 
