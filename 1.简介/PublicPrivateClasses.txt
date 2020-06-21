@@ -1,0 +1,24 @@
+Visibility
+
+Public: 
+	-Inside a class
+	-Outside a class
+	-Inside the package
+	-Outside the package
+
+private int myField;   //field
+
+public int myMethod() {  //method
+  ...
+}
+
+有 static， 所有东西 都用 这一个 method
+没 static，所有东西都有自己 的 method
+
+
+那这里 如果 想用 不 static 的 sayHi
+在 main 里 怎么写
+先通过 一个 constructor 来 new 一个 object
+然后 通过 object 来 用 sayHi
+
+那这里 报错 是因为 main 里 没有 project

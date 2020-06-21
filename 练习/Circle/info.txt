@@ -1,0 +1,13 @@
+Circle
+
+-Data Fields(atttributes)
+ -> center: Point
+ -> radius: double
+
+-Methods(actions)
+ ->Circle()
+ ->Circle( initialCenter: Point, initialRadius: double)
+ ->getArea(): double
+ ->getPerimeter(); double
+ ->setRadius( newRadius: double ): void
+ ->setCenter( newCenter: Point ): void
