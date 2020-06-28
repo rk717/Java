@@ -1,0 +1,23 @@
+throws 
+
+void f() throws A
+{
+    ....
+    ....
+    ....
+}
+
+throws A 表示调用f方法时f方法可能会抛出A类异常，建议您调用f方法时
+最好对f方法可能抛出的A类异常进行捕捉。
+
+throws A 不表示f方法一定会抛出A类异常
+throws A， f 方法也可以不抛出A类异常
+
+throws A 不表示调用f方法时，必须的对A异常进行捕捉
+    假设A是Runtime Exception子类异常
+    由于RuntimeException的子类异常可以处理也可以不处理，所以编译器允许你调用f方法时，
+    对f方法抛出的RuntimeException子类异常不进行处理。
+
+强烈建议你：
+    对throws出的所有异常进行处理
+    如果一个方法内部已经对A异常进行了处理，则就不要再throw A 
