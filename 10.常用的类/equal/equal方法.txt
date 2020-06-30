@@ -1,0 +1,17 @@
+所有类都从Object类中继承了equals方法
+
+Object类中equals方法源代码如下：
+    public boolean equals(Object obj)
+    {
+        return this == obj;
+    }
+
+Object中的equals方法是直接判断this和obj本身的值是否相等，
+即用来判断调用equals的对象和形参obj所引用的对象是否是同一对象，
+所谓同一对象就是指是内存中同一块存储单元，
+如果this和obj指向的是同一块内存对象，则返回true，
+如果this和obj指向的不是同一块内存，则返回false。
+注意：即便是内容完全相等的两块不同的内存对象，也会返回false，因为地址不同。
+
+如果是同一块内存，则Object中的equals方法返回true，
+如果不是同一块内存，则返回false。
