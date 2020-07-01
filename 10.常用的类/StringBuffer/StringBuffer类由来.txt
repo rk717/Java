@@ -1,0 +1,27 @@
+StringBuffer类由来
+
+String类对象一旦创建就不可更改
+
+如果经常对字符串内容进行修改，则使用StringBuffer.
+
+如果经常对字符串内容进行修改而使用String的话，就会导致既耗空间又耗时间。
+
+例子：
+    String s1 = "abasdmasc"; String s2 = "123";
+    --String s1 = s1 + s2;
+    --删除str1中的字母d
+
+StringBuffer 对象的内容是可以改变的。
+
+因此String类中没有修改字符串的方法，但是StringBuffer类中却有大量修改字符串的方法。
+
+
+StringBuffer类的构造函数
+public StringBuffer()
+    -创建一个空的没有任何字符的StringBuffer对象
+
+public StringBuffer(int capacity)
+    -创建一个不带字符，但具有指定初始容量的字符串缓冲区。
+
+public StringBuffer(String str)
+    -创建一个StringBuffer对象，包含与str对象相同的字符序列
