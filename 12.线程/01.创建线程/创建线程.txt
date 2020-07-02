@@ -1,0 +1,18 @@
+方法1：
+    创建一个继承Thread类（假定类名为A），并重写Thread中的run方法。
+    构造一个A类的对象，假定对象名为aa。
+    调用aa的start方法【start方法是从Thread继承过来的】
+
+注意问题：
+    Thread中start()方法的功能就是创建一个新的线程，
+    并自动调用该线程的run()方法，直接调用run()方法是不会创建一个新的线程的。
+
+    执行一个线程实际就是执行该线程run方法中的代码。
+
+    执行完aa.start(); 后并不表示aa所对应的线程就一定会立即得到了执行，
+    aa.start();执行完只是表示aa线程具有了可以立即被CPU执行的资格，
+    但由于想抢占CPU执行的线程很多，CPU并不一定会立即去执行aa所对应的线程。
+
+    一个Thread对象能且只能代表一个线程，
+    一个Thread对象不能调用两次start()方法，否则会抛出java.lang.IllegalThreadStateException异常。
+
