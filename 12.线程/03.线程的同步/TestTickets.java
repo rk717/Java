@@ -1,3 +1,7 @@
+/*
+    错误的程序
+*/
+
 class A implements Runnable
 {
     public static int tickets = 100; 
@@ -33,3 +37,12 @@ public class TestTickets
         t2.start();
     }
 }
+
+////////////////////////
+/*
+if(票数大于零)
+{
+    买票
+    票数减1
+}
+*/
