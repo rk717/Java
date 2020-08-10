@@ -1,0 +1,17 @@
+-能存储记录
+-不限制能存储记录的数量
+-能知道已经存储的记录的数量
+-能查看存进去的每一条记录
+-能删除一条记录
+-能列出所有记录
+
+
+add(String note);
+
+getSize();
+
+getNote(int index);
+
+removeNote(int index);
+
+list();
