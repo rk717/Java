@@ -1,0 +1,79 @@
+About the exam
+You may not use any IDE while you are solving the exam.
+
+You may download JUnit’s libraries required for testing by clicking here.
+
+I suggest that you create your solution for the exercise in the order it appears in the text.
+
+Run the tests you create like this. (If you’re using Linux, use : instead of ;.)
+
+javac -cp .;junit-4.13.jar tests/VoyageTest.java
+java -cp .;junit-4.13.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore tests.VoyageTest
+Also, make sure that you create good quality code.
+
+Submitting your solution
+During submission, you have to create a single ZIP file. BE-AD does not accept any other archive formats.
+Make sure you include all .java source files that you’ve created. All other files (.class files, .jar files for the tester) are not necessary.
+Exercise
+Create an exam.columbus.Voyage class representing a voyage like that of Christopher Columbus which has the following fields, all ints: numberOfSailors, numberOfShips, voyagePeriod.
+
+It also has two static fields: goalX and goalY. These are set to 10 initially.
+
+Make all fields of Voyage class accessible to the descendants of Voyage, but not to any other class.
+Create getters for them, too, but not setters.
+Voyage has two constructors:
+A constructor that takes the numberOfSailors, numberOfShips and voyagePeriod as parameters and sets the corresponding fields.
+In it, make sure that the following conditions hold:
+numberOfShips is at least 1 but not more than 5,
+voyagePeriod is a positive number and not more than 42 days,
+numberOfSailors isn’t less than the numberOfShips.
+If either one is incorrect, throw an IllegalArgumentException.
+To make it easier to check the first two conditions, create a static method isBetween(number, min, max) that returns whether number is between min and max (inclusive).
+A constructor that takes no arguments. It calls the previously defined constructor with the following values:
+numberOfSailors: 33
+numberOfShips : 4
+voyagePeriod : 42
+Create tests.VoyageTest that uses JUnit to test the functionality of the class with the following test cases.
+
+testConstructor1 and testConstructor2 tests the constructors with good values
+They check if the getters return the expected values.
+testConstructor1WrongNumberOfShips, testConstructor1WrongNumberOfSailors and testConstructor1WrongVoyagePeriod test the constructors with wrong values
+They throw IllegalArgumentExceptions.
+Create an enum Direction which includes the four directions.
+
+All enum values have two associated ints that indicate how many steps have to be taken in the x and y direction.
+For example, NORTH will have 0 for x and 1 for y.
+Create getters for these values.
+Add a test case testDirectionOpposites that checks that the getters for x and y of opposite directions return opposite numbers (e.g. -1 and 1).
+Create the class exam.columbus.Ship with a name and two coordinates: x and y.
+
+The ship’s constructor takes its name. Both x and y are set to 0 in the beginning. All fields have getters, but no setters.
+Create the interface exam.columbus.Navigable with the method move that takes a Direction.
+
+Implement it in Ship. When it is called, move the ship according to the enum values.
+Add a test case testShipMove that performs two moves on a ship, and checks its new position.
+The Ship class uses toString to print itself exactly like this: This ship has a long, beautiful name@(123, -456) if the ship’s name is This ship has a long, beautiful name and it is currently at (123,-456). - Make a test case for this ship, testShipWithALongAndBeautifulName. You will have to move the ship 123 times to the east and 456 times to the south.
+
+Create FamousVoyage, a child class of Voyage.
+
+It has a field called ships, a list of Ships.
+Its only constructor takes numberOfSailors, voyagePeriod and an arbitrary number of Ships. It stores them in its fields.
+The class implements Navigable, too. When it is called, move the ship according to the enum values.
+Add a test case testFamousConstructor that creates a voyage with 2 named ships, and checks if the ship count is good.
+In the test case, make the variable’s type Voyage (not FamousVoyage).
+Add a test case testTooFamousConstructor that creates a voyage with 6 named ships, and checks if IllegalArgumentException is thrown.
+Make toString in FamousVoyage print ships like this: 2 ships: [Land@(1, 1), Ahoy@(-1, -1)] (with two ships Land and Ahoy).
+
+Add a test case testFamousToString that creates a voyage exactly like this and checks its printout.
+Let Voyage implement Navigable now.
+
+The implementation in Voyage can be empty.
+The implementation in FamousVoyage will move each ship appropriately.
+If a ship reaches the goal after a move (it has the coordinates goalX and goalY), remove the ship from ships and update numberOfShips.
+Add a test case testFamousMove.
+Take ships like testFamousToString and move them 3x to the north and 7x to the west.
+Test that it gets you 2 ships: [Land@(-6, 4), Ahoy@(-8, 2)].
+Then move them 16x to the east and 6x to the north.
+Test that it gets you 1 ships: [Ahoy@(8, 8)].
+Then move them 2x to the east and 2x to the north.
+Test that it gets you 0 ships: [].
