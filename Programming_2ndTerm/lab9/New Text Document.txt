@@ -1,0 +1,46 @@
+Base class of every class!
+package java.lang;
+public class Object {
+public Object(){ ... }
+public String toString(){ ... }
+public int hashCode(){ ... }
+public boolean equals( Object that ){ ... }
+...
+}
+
+Implicit parent class, implicit constructor, implicit super
+class A {}
+class A extends java.lang.Object {
+A(){
+super();
+}
+}
+
+Erroneous!!!
+public class ExactTime extends Time {
+private int second;
+public ExactTime( int hour, int minute, int second ){
+if( second < 0 || second > 59 )
+throw new IllegalArgumentException();
+super(hour,minute );
+this.second = second;
+}
+}
+
+Seems OK, but…
+class Base {
+Base( int n ){}
+}
+
+class Sub extends Base {
+Sub(){ super(); }
+}
+
+
+
+Meaning
+class Base extends Object {
+Base( int n ){
+super();
+}
+}
