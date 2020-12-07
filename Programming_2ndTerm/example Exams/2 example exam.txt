@@ -1,0 +1,384 @@
+% Programming languages ​​(Java) mid-term closed, 28.10.2016.
+
+# General Information
+
+In this description, the classes as well as the minimum required
+descriptions of methods will be included. It is important in problem solving
+comply with the restrictions on names and types,
+and text formatting rules.
+
+Auxiliary functions can be created, data members not bound in the task
+and their names are also entrusted to the solver of the task. Let's strive
+to make the internal representation of the classes as * best possible
+we protect *, so only allow and access
+to which the task calls or what class it is using
+code snippet required!
+
+Your submitted solution should work with the included test programs,
+but this is not a sufficient condition for acceptance. The source code you wrote
+be sufficiently general and reusable!
+
+
+# Testing
+
+There are separate test cases for each subtask, which are the tasks
+marked at the end. They can be compiled and run on their own .jaja`
+files using the attached `.jar`. For example, under Windows first
+The test cases for this task can be compiled and run as follows:
+
+~~~~
+> javac -cp.; tests-WeightLifter.jar tests / Part1.java
+> java -cp.; tests-WeightLifter.jar tests / Part1
+~~~~
+
+Use the same test cases for the complete task
+also the `Test` class performing the test. This can be done under Windows
+to run:
+
+~~~~
+> java -cp.; tests-WeightLifter.jar Test
+~~~~
+
+Under Linux, everything can be compiled and run the same way, except `-cp`
+in the parameter, the semicolon must be replaced by a colon.
+
+# Summary description of the task
+
+In this task, we will simulate competition between weightlifters.
+
+It belongs to the program
+[unit tester] (http: // TODO)
+and one
+[sample file] (http: // TODO),
+which tests the functionality of each class.
+
+# Detailed description of the task
+
+## Part 1 (6 + 1 points)
+
+`weightlifting.WeightLifter` class:
+
+The class represents a weightlifter.
+
+ - The class has two hidden data members: a text type
+ `name`, which stores the name of the weightlifter and is an integer type
+ `weight`, which stores the maximum weight that a
+ weightlifter can lift.
+ 
+ - The class should have a hidden constructor that is a parameter
+ gets the name and weight and sets the appropriate data members.
+ 
+ - Let be a static `make` method that also has a name and a
+ you get weight. The method must check the parameters, and
+ if they are correct, create and return the
+ `WeightLifter` object corresponding to the parameters. If the parameters
+ are not good, the method should return `null`. Containing the name
+ parameter is valid if it consists only of letters or spaces and
+ at least 2 characters long (what these characters look like
+ distribution need not be examined). Containing the weight
+ parameter is correct if its value is positive, but
+ up to 300.
+ * Help *: you can use the `isLetter` method of the` Character` class.
+ 
+ - Let there be a parameterless `getWeight` that returns the weight
+ value.
+ 
+ - The class should include a `strongerThan` method that decides
+ whether the current weightlifter is stronger (can carry more weight
+ lift) than the weight lift obtained in the parameter.
+ 
+ - The class should have a parameterless `show` method that
+ returns a textual representation of the object. The format should be a
+ the following: `name - weight-right-aligned kg` (if the weight is a single digit,
+ then two, if double-digit, a * extra * space must be inserted
+ in front of the number).
+ 
+ - The class should contain a `strongestWeightLifter` named
+ class-level data member, which is the strongest weightlifting reference
+ contains what has ever been created (if there are more than one, these are
+ the first). If you have not created a `WeightLifter` object yet,
+ then the value of the data member should be `null`. Pay attention to the constructor
+ always update this object when all so far
+ creates a stronger weightlifter.
+ 
+ - Let be a class-level `getStrongestWeightLifter` method, which
+ returns the former `WeightLifter` object.
+
+Tester: `tests.Part1`
+
+## Part 2 (7 + 2 points)
+
+`weightlifting.Championship` class:
+
+The class represents a simplified weightlifting championship.
+
+ - Keep the class in a hidden concatenated list type data member
+ obviously who will start the tournament (type `WeightLifter`
+ objects).
+ 
+ - The class should have a public constructor, which is a filename
+ gets as a parameter that contains weightlifters. The method works
+ upload the file, filter out the incorrect data, and upload the
+ weightlifters to the chained list. If the file does not exist or not
+ readable, the list of weightlifters should be empty, the constructor
+ though, don’t let the resulting exception.
+ Each line of the input file contains a weightlifter in the form `name: weight`.
+ If the line does not have this structure or the `weight` cannot be converted
+ number, or the `WeightLifter` object from the specified data is not
+ can be created, the line should be ignored and
+ processing should continue with the next line.
+ 
+    That a text contains an integer in two ways
+    we can check.
+
+     the. Catch by [`Integer.parseInt ()`] by [parseint] failed
+        thrown when converting to a number
+        [`java.lang.NumberFormatException`] [nfe] exception.
+
+     b. We examine the text to see if each character is a digit
+        or not with the `Character.isDigit ()` method.
+         
+ - Let be a `numberOfWeightLifters` method that returns
+ the number of weightlifters still competing in the championship. Initially it is
+ all weightlifters are in competition.
+ 
+ - Let there be a parameterless `show` method, which is a text type
+ returns competitors still in play. The text
+ competitors must be listed in the order in which they are
+ in the order in which they were read by the constructor and in a form
+ as generated by the `show` method of` WeightLifter`. Pay attention
+ so that there is no line break after the last competitor!
+
+Tester: `tests.Part2`
+
+Part # 3 (6 + 1 points)
+
+Add the following to the `weightlifting.Championship` class
+public methods:
+
+ - `strongerThan`: the method is an object of type` WeightLifter`
+ waits and returns a chained list of such objects. The method
+ collect competitors who are stronger than
+ weightlifter obtained in parameter. Weightlifters in the returned list
+ in the order in which the constructor reads it
+ them.
+ 
+ - `average`: the method returns a real number (` double`),
+ how much weight lifters can lift on average.
+ If there are no weightlifters, the method returns `-1`.
+ 
+    Note: if we divide two integers, it is
+    the result will always be an integer (rounded down).
+
+Tester: `tests.Part3`
+
+Part # 4 (6 + 1 points)
+
+Add the following to the `weightlifting.Championship` class
+public methods:
+
+ - `round`: the method has no parameters and a round of competition
+ simulates. He is the weakest in the round in every race
+ weight-lifter. If you have the same strength as the weakest player,
+ then the one that the constructor has read before falls out. The dropout
+ weightlifter should be removed from the list and this weightlifter will be the
+ also the return value of the method.
+ If no weightlifter was in play at the beginning of the round, the
+ method return `null`.
+ 
+ - `championship`: the method has no parameters and a league
+ simulates. The tournament consists of as many laps as there are weightlifters. THE
+ method to gather in a chained list of weightlifters,
+ the order in which the competitors were eliminated in each lap. This
+ the list will be the return value of the method.
+
+Tester: `tests.Part4`
+
+## Scoring (theory + practice)
+
+  - 0 - 20: insufficient (1)
+  - 21 - 25: sufficient (2)
+  - 26 - 30: medium (3)
+  - 31 - 35: good (4)
+  - 36 - 40: prominent (5)
+
+
+% Programming languages ​​(Java) mid-term closed, 28.10.2016.
+
+# General Information
+
+In this description, the classes as well as the minimum required
+descriptions of methods will be included. It is important in problem solving
+comply with the restrictions on names and types,
+and text formatting rules.
+
+Auxiliary functions can be created, data members not bound in the task
+and their names are also entrusted to the solver of the task. Let's strive
+to make the internal representation of the classes as * best possible
+we protect *, so only allow and access
+to which the task calls or what class it is using
+code snippet required!
+
+Your submitted solution should work with the included test programs,
+but this is not a sufficient condition for acceptance. The source code you wrote
+be sufficiently general and reusable!
+
+
+# Summary description of the task
+
+In this task, we will take a very simplified operation of a market
+to simulate.
+
+It belongs to the program
+[unit tester] (http: // TODO)
+and one
+[sample file] (http: // TODO),
+which tests the functionality of each class.
+
+# Detailed description of the task
+
+## Part 1 (6 + 1 points)
+
+`market.Fruit` class:
+
+The class represents a fruit.
+
+ - The class has two hidden data members: a text type
+ `name`, which stores the name of the fruit and is an integer type
+ `price`, which stores the price of the fruit.
+ 
+ - The class should have a hidden constructor that is a parameter
+ you get the name and price and set the appropriate data members.
+ 
+ - Let be a static `make` method that also has a name and a
+ you get a price. The method must check the parameters, and
+ if they are correct, create and return the
+ `Fruit` object corresponding to the parameters. If the parameters
+ are not good, the method should return `null`. Containing the name
+ parameter is valid if it contains only letters and
+ at least 2 characters long. Including the price
+ parameter is correct if positive, but up to 5000 and 0
+ or ends at 5.
+ * Help *: you can use the `isLetter` method of the` Character` class.
+ 
+ - Let there be a parameterless `getPrice` that returns the fruit
+ reap.
+ 
+ - The class should include a `cheaperThan` method that decides
+ whether the current fruit is cheaper than that obtained in the parameter
+ fruit.
+ 
+ - The class should have a parameterless `show` method that
+ returns a textual representation of the object. The format should be a
+ next: `name (with HUF-thousand) HUF (if the price is greater than 1000,
+ then a space must be used as a division into thousands, e.g. `3 065`).
+ 
+ - The class should contain a `cheapestFruit` named
+ a class-level data member containing the cheapest fruit,
+ which have ever been created (if there are more than one, then one of them
+ first). If a `Fruit` object has not been created yet, it is
+ data member must be `null`. Note that the constructor is always
+ update this object when all cheaper than before
+ creates fruit.
+ 
+ - Let be a class-level `getCheapestFruit` method, which
+ returns the former `Fruit` object.
+
+Tester: `tests.Part1`
+
+## Part 2 (7 + 2 points)
+
+`market.Market` class:
+
+The class represents a simplified market.
+
+ - Keep the class in a hidden concatenated list type data member
+ obviously what kind of fruit is available on the market (`Fruit`
+ types of objects).
+ 
+ - The class should have a public constructor, which is a filename
+ you get as a parameter that contains fruits. The method works
+ upload the file, filter out the incorrect data, and upload the
+ fruits in the chained list. If the file does not exist or not
+ readable, the list of fruits should be empty, the constructor
+ though, don’t let the resulting exception.
+ Each line of the input file contains a fruit in the form `name, price`.
+ If the line item does not have this structure or the `price` cannot be converted
+ number, or the `Fruit` object from the specified data is not
+ can be created, the line should be ignored and
+ processing should continue with the next line.
+ 
+    That a text contains an integer in two ways
+    we can check.
+
+     the. Catch by [`Integer.parseInt ()`] by [parseint] failed
+        thrown when converting to a number
+        [`java.lang.NumberFormatException`] [nfe] exception.
+
+     b. We examine the text to see if each character is a digit
+        or not with the `Character.isDigit ()` method.
+         
+ - Let be a `numberOfFruits` method that returns a
+ the number of fruits still available on the market. Initially, all fruits
+ available.
+ 
+ - Let there be a parameterless `show` method, which is a text type
+ returns the fruit still available. When composing the text a
+ the fruits are listed in the order in which the
+ constructor read them and in a form like `Fruit`
+ It is produced by the `show` method. Notice that the last fruit
+ no more line breaks after!
+
+Tester: `tests.Part2`
+
+Part # 3 (6 + 1 points)
+
+Add the following public to the `market.Market` class
+methods:
+
+ - `cheaperThan`: the method is an object of type` Fruit`
+ waits and returns a chained list of such objects. The method
+ collect fruits that are cheaper than
+ fruit obtained in parameter. The fruits in the returned list
+ in the order in which the constructor reads it
+ them.
+ 
+ - `average`: the method returns a real number (` double`),
+ how much is the average price of fruit.
+ If there are no fruits, the method returns `-1`.
+ 
+    Note: if we divide two integers, it is
+    the result will always be an integer (rounded down).
+
+Tester: `tests.Part3`
+
+Part # 4 (6 + 1 points)
+
+Add the following public to the `market.Market` class
+methods:
+
+ - `buyCheapestFruit`: the method has no parameters and a
+ simulates a purchase. A buyer is always the cheapest product
+ takes it. If it is priced the same as the cheapest fruit,
+ which the constructor has previously added to the list. Bought
+ fruit must be removed from the list and this fruit will be the
+ also the return value of the method.
+ If at the beginning of the purchase no fruit was already on the market, then
+ the method returns `null`.
+ 
+ - `sale`: the method has no parameters and a sale
+ simulates. The sale lasts until all are sold out
+ fruit. The method is a chained list of fruits
+ collect the order in which the fruits were purchased.
+ This list will be the return value of the method.
+
+Tester: `tests.Part4`
+
+## Scoring (theory + practice)
+
+  - 0 - 20: insufficient (1)
+  - 21 - 25: sufficient (2)
+  - 26 - 30: medium (3)
+  - 31 - 35: good (4)
+  - 36 - 40: prominent (5)
+
