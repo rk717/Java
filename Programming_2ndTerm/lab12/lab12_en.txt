@@ -1,0 +1,11 @@
+# Programming Languages (BSc, 18) Java Exercise 12
+
+
+
+### Task 1
+
+A point (`Point`) has the coordinates` x`, `y` (type` int`). Such points can be (completely) sorted by lexicographic sorting. Using this sort, implement the `compareTo ()` method. Organize a list of points as an example.
+
+### Task 2
+
+Write a `ExtendedString` class that stores data of type` String`, comparable to the length of the string (`compareTo ()`), iterated per character (`iterator ()`).
